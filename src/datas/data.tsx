@@ -1,6 +1,5 @@
 import { valueType } from "../constant/Type";
 
-
 export const dataValue: valueType[] = [
     {
         key: 0,

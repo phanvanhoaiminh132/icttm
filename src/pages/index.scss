@@ -15,7 +15,9 @@
         height: 650px;
         .chart-element{
             height: 500px;
+            overflow: hidden;
         }
+       
     }
     .box-map{
         margin: 15px;
@@ -24,6 +26,9 @@
         padding: 15px;
         background-color: white;
         height: 650px;
+        .chart-element{
+            height: 575px;
+        }
     }
 }
 
@@ -32,3 +37,4 @@
     margin: 15px;
     background-color: white;
 }
+

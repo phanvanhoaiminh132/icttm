@@ -17,8 +17,12 @@ export interface valueType {
 
 export interface initialStateType {
     data: valueType[];
+    dataAll: valueType[];
     typeChart: string;
     valueChart: DataTypeCollum;
+    isZoom: boolean;
+    defaultPageSize: number;
+    currentPage: number;
 }
 
 export interface DataTypeTable {

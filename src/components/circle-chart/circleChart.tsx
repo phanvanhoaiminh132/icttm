@@ -10,6 +10,10 @@ const CircleChart = () => {
         data,
         angleField: dataValueChart.value,
         colorField: "product",
+        label: {
+          text: 'product',
+          position: 'outside',
+        },
         legend: {
             color: {
                 title: false,

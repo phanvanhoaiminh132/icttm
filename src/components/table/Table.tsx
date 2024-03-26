@@ -1,11 +1,9 @@
 import React from 'react';
-import { Table, Input, TableColumnsType, TableProps } from 'antd';
+import { Table, Input, TableColumnsType, TableProps, Pagination, PaginationProps } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterData } from '../../actions/data.action.tsx';
+import { changPagination, filterData } from '../../actions/data.action.tsx';
 import './Table.scss';
 import { DataTypeTable } from '../../constant/Type.tsx';
-
-
 
 const columns: TableColumnsType<DataTypeTable> = [
   {
@@ -16,53 +14,56 @@ const columns: TableColumnsType<DataTypeTable> = [
   {
     title: 'Transactions',
     dataIndex: 'transactions',
-    defaultSortOrder: 'descend',
     sorter: (a:any, b:any) => a.transactions - b.transactions,
   },
   {
     title: 'Us Dollar Value',
     dataIndex: 'dollarValue',
-    defaultSortOrder: 'descend',
     sorter: (a:any, b:any) => a.dollarValue - b.dollarValue,
   },
   {
     title: 'Quantity',
     dataIndex: 'quantity',
-    defaultSortOrder: 'descend',
     sorter: (a:any, b:any) => a.quantity - b.quantity,
   },
   {
     title: 'Containers',
     dataIndex: 'containers',
-    defaultSortOrder: 'descend',
     sorter: (a:any, b:any) => a.containers - b.containers,
   },
   {
     title: 'Weight',
     dataIndex: 'weight',
-    defaultSortOrder: 'descend',
     sorter: (a:any, b:any) => a.weight - b.weight,
   },
 ];
 
-const onChange: TableProps<DataTypeTable>['onChange'] = (pagination, filters, sorter, extra) => {
-  console.log('params', pagination, filters, sorter, extra);
-};
-
-
-
 const TableComponent = () => {
   const dispatch = useDispatch();
   const data = useSelector((state:any)=> state.dataReducer.data);
+  const dataAll = useSelector((state:any)=> state.dataReducer.dataAll);
+  const dataDefaultPageSize = useSelector((state:any)=> state.dataReducer.defaultPageSize);
+  const dataCurrentPage = useSelector((state:any)=> state.dataReducer.currentPage);
 
   const filterTextData = (data: string) =>{
     dispatch(filterData(data));
   }
 
+  const onChange: PaginationProps['onChange'] = (pageNumber) => {
+    dispatch(changPagination(pageNumber));
+  };
+
   return(
     <>
       <Input className='input-element' onChange={(e:any) => filterTextData(e.target.value)} placeholder="Filter by product name" />
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table columns={columns} dataSource={data} pagination={false} />
+      <Pagination 
+        onChange={onChange}
+        className='pangation' 
+        current={dataCurrentPage} 
+        defaultPageSize={dataDefaultPageSize}
+        total={dataAll.length} 
+      />
     </>
   );
 

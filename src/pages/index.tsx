@@ -30,7 +30,10 @@ const Index = () =>{
                     <NavChartBottom/>
                 </div>
                 <div className='box-map'>
-                    <MapElement />
+                    <div className='chart-element'>
+                        <MapElement />
+                    </div>
+                    <NavChartBottom/>
                 </div>
             </div>
             <div className='botton-element'>
