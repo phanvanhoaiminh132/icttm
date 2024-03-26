@@ -1,0 +1,16 @@
+.nav-chart{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 15px;
+    margin-bottom: 15px;
+    .icon{
+        margin-right: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        color: black;
+        &.active{
+            color: purple;
+        }
+    }
+}

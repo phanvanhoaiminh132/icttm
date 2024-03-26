@@ -1,0 +1,34 @@
+
+
+.top-element{
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .box-chart{
+        width: 50%;
+        margin: 15px;
+        padding: 15px;
+        background-color: white;
+        height: 650px;
+        .chart-element{
+            height: 500px;
+        }
+    }
+    .box-map{
+        margin: 15px;
+        width: 50%;
+        position: relative;
+        padding: 15px;
+        background-color: white;
+        height: 650px;
+    }
+}
+
+.botton-element{
+    padding: 15px;
+    margin: 15px;
+    background-color: white;
+}
